@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-// import arrayUtil from "dojo/_base/array";
+import arrayUtil from "dojo/_base/array";
+import lang from "dojo/_base/lang";
+import d from "dojo/on";
 
 class App extends Component {
   constructor() {
@@ -11,15 +13,19 @@ class App extends Component {
     }
   }
   render() {
+    console.log(lang)
+    console.log(d)
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <p className="App-intro">
-          {this.state.foo.indexOf("foo")} To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        {this.state.foo.map(foo => (
+          <p key={foo} className="App-intro">
+            {foo} has index {arrayUtil.indexOf(this.state.foo, foo)}
+          </p>
+        ))}
       </div>
     );
   }

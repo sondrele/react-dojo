@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -85,7 +87,11 @@ module.exports = {
       'react-native': 'react-native-web'
     }
   },
-  
+
+  dojoWebpackLoader: {
+   dojoCorePath: path.resolve(__dirname, './node_modules/dojo')
+  },
+
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
@@ -124,7 +130,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: paths.appSrc,
         loader: 'babel',
-        
+
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
@@ -163,9 +169,14 @@ module.exports = {
       }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
+      , {
+        test: /\.js$/,
+        loader: "dojo-webpack-loader",
+        include: path.resolve(__dirname, '../node_modules/dojo'),
+      }
     ]
   },
-  
+
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [

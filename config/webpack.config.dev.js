@@ -80,13 +80,13 @@ module.exports = {
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
     }
   },
 
-  // dojoWebpackLoader: {
-  //  dojoCorePath: path.resolve(__dirname, './node_modules/dojo')
-  // },
+  dojoWebpackLoader: {
+   dojoCorePath: path.resolve(__dirname, './node_modules/dojo')
+  },
 
   module: {
     // First, run the linter.
@@ -165,11 +165,11 @@ module.exports = {
       }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
-      //, {
-      //   test: /\.js$/,
-      //   loader: "dojo-webpack-loader",
-      //   include: path.resolve(__dirname, './dojo/'),
-      // }
+      , {
+        test: /\.js$/,
+        loader: "dojo-webpack-loader",
+        include: path.resolve(__dirname, '../node_modules/dojo'),
+      }
     ]
   },
 

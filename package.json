@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "dojo": "^1.12.2",
+    "dojo": "^1.10.8",
     "react": "^15.5.3",
     "react-dom": "^15.5.3"
   },
