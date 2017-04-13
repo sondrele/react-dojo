@@ -4,6 +4,7 @@ import './App.css';
 import arrayUtil from "dojo/_base/array";
 import lang from "dojo/_base/lang";
 import d from "dojo/on";
+import def from "dojo/Deferred";
 
 class App extends Component {
   constructor() {
@@ -15,6 +16,7 @@ class App extends Component {
   render() {
     console.log(lang)
     console.log(d)
+    console.log(def)
     return (
       <div className="App">
         <div className="App-header">

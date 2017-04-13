@@ -81,11 +81,8 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      "dojo": path.resolve(__dirname, '../dojo'),
     }
-  },
-
-  dojoWebpackLoader: {
-   dojoCorePath: path.resolve(__dirname, './node_modules/dojo')
   },
 
   module: {
@@ -168,9 +165,13 @@ module.exports = {
       , {
         test: /\.js$/,
         loader: "dojo-webpack-loader",
-        include: path.resolve(__dirname, '../node_modules/dojo'),
+        include: path.resolve(__dirname, '../dojo'),
       }
     ]
+  },
+
+  dojoWebpackLoader: {
+    dojoCorePath: path.resolve(__dirname, '../dojo')
   },
 
   // We use PostCSS for autoprefixing only.
