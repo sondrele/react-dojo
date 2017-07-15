@@ -1,7 +1,5 @@
 'use strict';
 
-var path = require('path');
-
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -88,10 +86,6 @@ module.exports = {
     }
   },
 
-  dojoWebpackLoader: {
-   dojoCorePath: path.resolve(__dirname, './node_modules/dojo')
-  },
-
   module: {
     // First, run the linter.
     // It's important to do this before Babel processes the JS.
@@ -172,9 +166,13 @@ module.exports = {
       , {
         test: /\.js$/,
         loader: "dojo-webpack-loader",
-        include: path.resolve(__dirname, '../node_modules/dojo'),
+        include: paths.dojoSrc,
       }
     ]
+  },
+
+  dojoWebpackLoader: {
+   dojoCorePath: paths.dojoSrc
   },
 
   // We use PostCSS for autoprefixing only.

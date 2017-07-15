@@ -1,7 +1,5 @@
 'use strict';
 
-var path = require('path');
-
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -81,7 +79,6 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
-      "dojo": path.resolve(__dirname, '../dojo'),
     }
   },
 
@@ -165,13 +162,13 @@ module.exports = {
       , {
         test: /\.js$/,
         loader: "dojo-webpack-loader",
-        include: path.resolve(__dirname, '../dojo'),
+        include: paths.dojoSrc,
       }
     ]
   },
 
   dojoWebpackLoader: {
-    dojoCorePath: path.resolve(__dirname, '../dojo')
+    dojoCorePath: paths.dojoSrc,
   },
 
   // We use PostCSS for autoprefixing only.
